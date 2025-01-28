@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/ET_Tarefa_04_GPIO.uf2'
+elf = 'build/ET_Tarefa_04_GPIO.elf'

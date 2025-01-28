@@ -42,11 +42,18 @@ pico_set_program_version(ET_Tarefa_04_GPIO "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(ET_Tarefa_04_GPIO 0)
-pico_enable_stdio_usb(ET_Tarefa_04_GPIO 0)
+pico_enable_stdio_usb(ET_Tarefa_04_GPIO 1)
+
+pico_generate_pio_header(ET_Tarefa_04_GPIO ${CMAKE_CURRENT_LIST_DIR}/ET_Tarefa_04_GPIO.pio)
+
+target_sources(ET_Tarefa_04_GPIO PRIVATE ET_Tarefa_04_GPIO.c)
 
 # Add the standard library to the build
-target_link_libraries(ET_Tarefa_04_GPIO
-        pico_stdlib)
+target_link_libraries(ET_Tarefa_04_GPIO PRIVATE
+    pico_stdlib
+    hardware_pio
+    hardware_adc
+    pico_bootrom)
 
 # Add the standard include files to the build
 target_include_directories(ET_Tarefa_04_GPIO PRIVATE
